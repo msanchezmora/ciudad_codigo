@@ -15,7 +15,11 @@ Obra realizada para el festival Eutopía 2014, dentro del contexto [Original, cl
 
 ## Bases del proyecto
 
-Ciudad Código es una obra realizada por [Toni Castillo](http://tonicastillo.com) y [Pablo Gallego](http://lawebdee.com) para el proyecto 'Original, clonación y copia' el dia 30 de septiembre de 2014 . La idea es que hasta el día 19 de octubre del mismo año cualquier persona podrá realizar variaciones de la obra. Para que se considere una variación de la original, se deberán conservar los conceptos y clases 'Persona' y 'Casa', aunque podrán variar completamente. El día 20 de octubre habrá un evento donde se expondrán los proyectos subidos y se realizará in-situ otra variación de la obra por parte de [Giuseppe de Cesare](giuseppedecesare.com).
+Ciudad Código es una obra realizada por [Toni Castillo](http://tonicastillo.com) y [Pablo Gallego](http://lawebdee.com) para el proyecto 'Original, clonación y copia' el dia 30 de septiembre de 2014.
+
+La explicación de la obra se puede ver en el [siguiente PDF](/presentacion_sistema.pdf).
+
+La idea es que hasta el día 19 de octubre del mismo año cualquier persona podrá realizar variaciones de la obra. Para que se considere una variación de la original, se deberán conservar los conceptos y clases 'Persona' y 'Casa', aunque podrán variar completamente. El día 20 de octubre habrá un evento donde se expondrán los proyectos subidos y se realizará in-situ otra variación de la obra por parte de [Giuseppe de Cesare](giuseppedecesare.com).
 
 ###Para participar hay dos opciones:
 
@@ -25,5 +29,7 @@ Ciudad Código es una obra realizada por [Toni Castillo](http://tonicastillo.com
 Habrá que adjuntar una imagen o vídeo del resultado, por si por error técnico no se pudieran ejecutar.
 
 Todo hasta el 19 de ocubre de 2014.
+
+Todas las obras serán propiedad de sus autores. Eutopía se reservará el derecha de reproducción.
 
 Para cualquier cuestión técnica o sobre el proyecto, contactar con info@ciudadcreativa.eu
