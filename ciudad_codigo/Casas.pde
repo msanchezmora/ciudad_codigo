@@ -14,8 +14,8 @@ class Casa {
   
   Casa() {
     //Pon tamaño aleatorio
-    ancho = random(anchoBordeMarco*2*0.3, anchoBordeMarco*2*1.1);
-    alto = random(anchoBordeMarco*2*0.3, anchoBordeMarco*2*1.1);
+    ancho = random(anchoBordeMarco*0.5*0.3, anchoBordeMarco*0.5*1.1);
+    alto = random(anchoBordeMarco*0.5*0.3, anchoBordeMarco*0.5*1.1);
     edad = int (random(3000)); //La edad incial es aleatoria
     //La edad máxima la hacemos aleatoria entre 5000 fotogramas y 60000 fotogramas
     edadMaxima = int (random(5000,60000));

@@ -1,3 +1,4 @@
+
 // Librerías BOX2D para la física (inercia, rebotes, etc)
 import shiffman.box2d.*;
 import org.jbox2d.common.*;
@@ -12,8 +13,8 @@ import org.jbox2d.dynamics.*;
 
 // CASAS
 // Primero se generará una casa por barrio. Después se añadirán casas adosadas con el mismo ángulo.
-int numeroMaximoCasas=120; //Numero de casas que se crearán
-int numeroMaximoDeBarrios = 7; //Número de casas que se creará al inicio de forma aleatoria e independiente
+int numeroMaximoCasas=150; //Numero de casas que se crearán
+int numeroMaximoDeBarrios = 10; //Número de casas que se creará al inicio de forma aleatoria e independiente
 float distaciaMinimaSeparacionCasasBarrio = 44.0; //Distancia mínima de separación para el resto de las casas
 float distaciaMaximaSeparacionCasasBarrio = 50.0; //Distancia maxima de separación para el resto de las casas
 
@@ -24,9 +25,9 @@ int numeroMaximoPersonas=160; //Numero de personas que se crearán. Las que se m
 int anchoBordeMarco=30;  //Separación entre el borde de la aplicación y la generación de contenidos. Las casas pueden sobresalir.
 
 //Datos GPS, que nos servirán para obtener los colores de los elementos.
-//Datos GPS de Córdoba
-float gpsLongitud = -4.7666;
-float gpsLatitud = 37.8833;
+//Datos GPS de TOKYO Córdoba
+float gpsLongitud = 139.6917;// -4.7666;
+float gpsLatitud = 35.689506; // 37.8833;
 //Color calculado a traves de estos datos GPS
 PVector colorLocal = new PVector(180.0+gpsLongitud, 180.0-(90.0+gpsLatitud), (90.0+gpsLatitud));
 float contraste; //Tomaremos las nubes en ese momento para dar más o menos contraste. Varíará de 0 a 100
@@ -81,9 +82,10 @@ void setup() {
 
   //Obtenemos los datos meteorológicos de una web
   json = loadJSONObject("http://api.openweathermap.org/data/2.5/weather?lat="+gpsLatitud+"&lon="+gpsLongitud);
-  JSONObject cloudsObj = json.getJSONObject("clouds");
-  //Ponermos la nubosidad como variable de contraste a la inversa
-  contraste = 100-cloudsObj.getInt("all");
+  JSONObject cloudsObj = json.getJSONObject("main");
+  // http://openweathermap.org/weather-data#current
+  //Ponermos la nubosidad como variable de contraste a la inversa Cloudiness, %
+  contraste = 100-cloudsObj.getInt("humidity"); // HUMIDITY INSTEAD OF CLOUDINESS
 
   //Ponemos el fondo blanco, solo una vez
   background(0, 0, 180);
@@ -137,6 +139,13 @@ void draw() {
       casas.get(i).actualizaPosicion();
     }
   }
+  
+  if ( frameCount % 150 == 0 ){
+    for (int i = 0; i < casas.size (); i++) {
+      casas.remove(i);
+    }
+  } 
+  
 }
 
 

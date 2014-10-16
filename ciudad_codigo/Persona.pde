@@ -5,16 +5,15 @@
 //
 
 class Persona{
-  //Configuración de personas
-  //Vida máxima en años
-  float diametroInicial=2;
-  float diametroFinal=20;
+//Configuración de personas  //Vida máxima en años
+  float diametroInicial=0.5;
+  float diametroFinal=5;
 
   Body body; //Box2D body
   Vec2 pos; //Posición
   float diametro;
   float edad;
-  float edadMaxima = 500;
+  float edadMaxima = 100;
 
   //Color de la persona, que se calculará al iniciar la persona
   float tonoPersona;
@@ -34,7 +33,7 @@ class Persona{
     if (random(10)<1) {
       tonoPersona = 0;
       saturacionPersona = 0;
-      brilloPersona = 180;
+      brilloPersona = 0;
     } else {
       tonoPersona = random(colorLocal.x-3-(contraste*0.2),colorLocal.x+3+contraste*0.2);
       saturacionPersona = random(colorLocal.y-1-(contraste*0.1), colorLocal.y+1+(contraste*0.1));
@@ -46,7 +45,7 @@ class Persona{
      //Cumple un frame
     edad++;
     //Calculamos el diámetro segun su edad
-    diametro=diametroInicial+(edad/edadMaxima)*(diametroFinal-diametroInicial);
+    diametro= diametroInicial+(edad/edadMaxima)*(diametroFinal-diametroInicial);
 
     //Obtenemos la posición del objeto box2d
     pos = box2d.getBodyPixelCoord(body);
@@ -54,8 +53,10 @@ class Persona{
     f.getShape().m_radius= box2d.scalarPixelsToWorld(diametro*0.5);
 
     //Le aplicacmos una fuerza entre -0.5 y 0.5
-    body.applyForce(new Vec2(random(-0.5,0.5), random(-0.5,0.5)), new Vec2(0, 0));
-
+    // You can apply forces, torques, and impulses to a body. When you apply a force or an impulse, you 
+    // provide a world point where the load is applied. This often results in a torque about the center of mass.
+    //body.applyForce(new Vec2(random(-0.5,0.5), random(-0.5,0.5)), new Vec2(0, 0));
+    body.applyTorque( random(-10000.0,10000.0)); // Rotation
     //Dibujamos el punto
     noFill();
     stroke(tonoPersona, saturacionPersona, brilloPersona);
@@ -77,23 +78,25 @@ class Persona{
     // Set its position
     bd.position = box2d.coordPixelsToWorld(x, y);
     bd.type = BodyType.DYNAMIC;
+    // Bodies can be static, kinematic, or dynamic. 
     body = box2d.createBody(bd);
 
     // Make the body's shape a circle
     CircleShape cs = new CircleShape();
     cs.m_radius = box2d.scalarPixelsToWorld(r);
-
+    // New Shape for Body
+    // This a 
     FixtureDef fd = new FixtureDef();
     fd.shape = cs;
-    // Parameters that affect physics
-    fd.density = 0.1;
+    // Para affect physics
+    fd.density = 0.5;
     fd.friction = 0.00;
-    fd.restitution = 0.1;
+    fd.restitution = 1.0;
 
     // Attach fixture to body
     body.createFixture(fd);
 
-    body.setAngularVelocity(random(-10, 10));
+    body.setAngularVelocity(random(-100, 100));
   }
   
   //Esta función hacer reiniciar a la persona.
